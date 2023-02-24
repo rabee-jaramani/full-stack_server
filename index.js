@@ -29,26 +29,26 @@ app.get('/all-users', async (req, res) => {
         console.log(err.message)
     }
 })
-app.get('/:id', async (req, res) => {
-    // const allData = await User.find()
-    // handle_url(req.url)
-    // res.send('hello id:' + req.url)
-    try {
-        let idd = req.url.slice(1)
-        const users = await User.find()
-        for (var i = 0; i < users.length; i++) {
-            console.log(users[i]._id.toString())
-            if (users[i]._id.toString() === idd) {
-                return res.json(users[i])
-            }
-        }
-        // return res.json('USER NOT FOUND')
-        res.redirect('/')
-    }
-    catch (err) {
-        console.log(err.message)
-    }
-})
+// app.get('/:id', async (req, res) => {
+//     // const allData = await User.find()
+//     // handle_url(req.url)
+//     // res.send('hello id:' + req.url)
+//     try {
+//         let idd = req.url.slice(1)
+//         const users = await User.find()
+//         for (var i = 0; i < users.length; i++) {
+//             console.log(users[i]._id.toString())
+//             if (users[i]._id.toString() === idd) {
+//                 return res.json(users[i])
+//             }
+//         }
+//         // return res.json('USER NOT FOUND')
+//         res.redirect('/')
+//     }
+//     catch (err) {
+//         console.log(err.message)
+//     }
+// })
 app.get("/rabee", (req, res) => {
     res.json({ message: "Hello from RABEEEEE" });
 });
