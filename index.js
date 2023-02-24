@@ -20,16 +20,25 @@ app.get(`/`, function (req, res) {
     res.send('Hello Sir')
 
 })
+app.get('/all-users', async (req, res) => {
+    try {
+        const allData = await User.find()
+        return res.json(allData)
+    }
+    catch (err) {
+        console.log(err.message)
+    }
+})
 app.get('/:id', async (req, res) => {
     // const allData = await User.find()
     // handle_url(req.url)
     // res.send('hello id:' + req.url)
     try {
-        let id = req.url.slice(1)
+        let idd = req.url.slice(1)
         const users = await User.find()
         for (var i = 0; i < users.length; i++) {
             console.log(users[i]._id.toString())
-            if (users[i]._id.toString() === id) {
+            if (users[i]._id.toString() === idd) {
                 return res.json(users[i])
             }
         }
@@ -52,15 +61,7 @@ app.post('/data', (req, res) => {
     res.send(JSON.stringify(data));
 })
 
-app.get('/all-users', async (req, res) => {
-    try {
-        const allData = await User.find()
-        return res.json(allData)
-    }
-    catch (err) {
-        console.log(err.message)
-    }
-})
+
 app.get('/user/:id', async (req, res) => {
     try {
         console.log('req.params.id', req.params.id)
